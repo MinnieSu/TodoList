@@ -2,10 +2,13 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
 const _ = require("lodash");
+const PORT = process.env.PORT || 3000
 
 // Require mongoose module
 const mongoose = require ("mongoose");
 const { Schema, model } = mongoose;
+const MongoURI = "mongodb+srv://Minnie:szh1364minnie@atlascluster.qzhasrk.mongodb.net/?retryWrites=true&w=majority";
+const uri = process.env.MongoURI;
 
 app.set("view engine", "ejs");
 
@@ -13,7 +16,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // Set up database connection
-  mongoose.connect("mongodb+srv://Minnie:szh1364minnie@atlascluster.qzhasrk.mongodb.net/?retryWrites=true&w=majority", {useNewUrlParser: true});
+  const connectDB = async function(){
+    try{
+      const connect = await mongoose.connect(MongoURI, {useNewUrlParser: true});
+      console.log("MongoDB connected: ${connect.connection.host}");
+    } catch (err){
+      console.log(err);
+      process.exit(1);
+    }
+  }
   
   // Define "item" schema and model
   const itemsSchema = new mongoose.Schema({ 
@@ -145,6 +156,9 @@ app.get("/about", function (req, res) {
   res.render("about");
 });
 
-app.listen(3000, function () {
-  console.log("server started on port 3000.");
-});
+connectDB().then(()=>{
+  app.listen(PORT, function () {
+    console.log("listening for requests!");
+  });
+})
+

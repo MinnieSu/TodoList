@@ -6,7 +6,6 @@ npm-debug.log*
 /build/
 logs/
 *.log
-*.json
 *~
 config/local.js
 .nyc_output/

@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000
 // Require mongoose module
 const mongoose = require ("mongoose");
 const { Schema, model } = mongoose;
-const MongoURI = "mongodb+srv://Minnie:szh1364minnie@atlascluster.qzhasrk.mongodb.net/?retryWrites=true&w=majority";
+const MongoURI = "mongodb+srv://Minnie:mantou20220622@atlascluster.qzhasrk.mongodb.net/?retryWrites=true&w=majority";
 const uri = process.env.MongoURI;
 
 app.set("view engine", "ejs");

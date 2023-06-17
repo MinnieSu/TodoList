@@ -7,8 +7,9 @@ const PORT = process.env.PORT || 3000
 // Require mongoose module
 const mongoose = require ("mongoose");
 const { Schema, model } = mongoose;
-const MongoURI = "mongodb+srv://Minnie:mantou20220622@atlascluster.qzhasrk.mongodb.net/?retryWrites=true&w=majority";
-const uri = process.env.MongoURI;
+const MongoURI = "mongodb+srv://Minnie:szh1364minnie@atlascluster.qzhasrk.mongodb.net/?retryWrites=true&w=majority";
+// const uri = process.env.MongoURI;
+// mongoose.connect(MongoURI,{useNewUrlParser: true});
 
 app.set("view engine", "ejs");
 
@@ -162,3 +163,6 @@ connectDB().then(()=>{
   });
 })
 
+// app.listen(PORT, function(){
+//   console.log("Listening for requests!")
+// });

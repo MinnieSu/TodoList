@@ -1,33 +1,33 @@
 <!-- Create a form  -->
 <%- include('header'); -%>
     <div class="box" id="heading">
-        <h1><%= listTitle %></h1>
+        <h1>
+            <%= listTitle %>
+        </h1>
     </div>
 
     <div class="box">
         <ul>
             <form action="/delete" method="post">
                 <!-- use hidden input to parse listTitle of each list item  -->
-                <input type="hidden" name="list" value= <%= listTitle %> > 
+                <input type="hidden" name="list" value=<%=listTitle %> >
                 <% newListItems.forEach(function(item){ %>
                     <div class="item">
                         <!-- Submit the form when checkbox is checked. Post the request to "/delete"  -->
                         <!-- We can tap into the item _id since it's an object in mongoDB-->
                         <input type="checkbox" onChange="this.form.submit()" name="checkbox" value=<%=item._id%> >
-                        <p><%= item.name %></p>
+                        <p>
+                            <%= item.name %>
+                        </p>
                     </div>
-                <%  }) %>
+                    <% }) %>
             </form>
 
         </ul>
         <form class="item" action="/" method="post">
             <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
-            <button type="submit" name="list" value= <%= listTitle %> >+</button>
+            <button type="submit" name="list" value=<%=listTitle %> >+</button>
         </form>
     </div>
 
     <%- include('footer'); -%>
-
-
-
-
